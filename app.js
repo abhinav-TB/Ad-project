@@ -10,4 +10,7 @@ app.use("/assets/js", express.static(__dirname + "/assets/js"));
 app.get('/', function(req, res) {
 	res.render('home');
 })
+app.get('/Listings', function(req, res) {
+	res.render('Listings');
+})
 app.listen(port, () => { console.log("Server started on port: " + port) });
