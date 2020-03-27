@@ -7,10 +7,10 @@
     </head>
     <body>
 
-        <h1 class="title">Ninjago - a Ninja REST API</h1>
+        <h1 class="title">Costomer Details REST API</h1>
         <div id="homepage">
-            <h1>Hire a ninja in your area!</h1>
-            <div id="ninjas"></div>
+            <h1>Find a offer in your area!</h1>
+            <div id="Costomers"></div>
         </div>
 
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
@@ -19,34 +19,34 @@
 
         <!-- Create React Component -->
         <script type="text/babel">
-        var Ninjas = React.createClass({
+        var Costomers = React.createClass({
             getInitialState: function(){
                 return({
-                    ninjas: []
+                    Costomers: []
                 });
             },
             render: function(){
-                var ninjas = this.state.ninjas;
-                ninjas = ninjas.map(function(ninja, index){
+                var Costomers = this.state.Costomers;
+                Costomers = Costomers.map(function(costumer, index){
                     return(
                         <li key={index}>
-                            <span className={ninja.available}></span>
-                            <span className="name">{ninja.name}</span>
-                            <span className="rank">{ninja.rating}</span>
-                            <span className="dist">{Math.floor(ninja.dist.calculated/1000)} km</span>
+                            <span className={costumer.available}></span>
+                            <span className="name">{costumer.name}</span>
+                            <span className="rank">{costumer.rating}</span>
+                            <span className="dist">{Math.floor(costumer.dist.calculated/1000)} km</span>
                         </li>
                     );
                 });
                 return(
-                    <div id="ninja-container">
+                    <div id="costumer-container">
                         <form id="search" onSubmit={this.handleSubmit}>
                             <label>Enter your Latitude:</label>
                             <input type="text" ref="lat" placeholder="latitude" required />
                             <label>Enter your Longitude:</label>
                             <input type="text" ref="lng" placeholder="longitude" required />
-                            <input type="submit" value="Find Ninjas" />
+                            <input type="submit" value="Find Offers" />
                         </form>
-                        <ul>{ninjas}</ul>
+                        <ul>{Costomers}</ul>
                     </div>
                 );
             },
@@ -55,17 +55,17 @@
                 var lng = this.refs.lng.value;
                 var lat = this.refs.lat.value;
 
-                fetch('/api/ninjas?lng=' + lng + '&lat=' + lat).then(function(data){
+                fetch('/api/details?lng=' + lng + '&lat=' + lat).then(function(data){
                     return data.json();
                 }).then( json => {
                     this.setState({
-                        ninjas: json
+                        Costomers: json
                     });
                     console.log(json);
                 });
             }
         });
-        ReactDOM.render(<Ninjas />, document.getElementById('ninjas'));
+        ReactDOM.render(<Costomers />, document.getElementById('Costomers'));
         </script>
 
 

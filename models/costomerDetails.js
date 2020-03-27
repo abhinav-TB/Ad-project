@@ -14,7 +14,7 @@ const GeoSchema = new Schema({
 });
 
 // create ninja Schema & model
-const NinjaSchema = new Schema({
+const detailsSchema = new Schema({
     name: {
         type: String,
         required: [true, 'Name field is required']
@@ -29,6 +29,6 @@ const NinjaSchema = new Schema({
     geometry: GeoSchema
 });
 
-const Ninja = mongoose.model('ninja', NinjaSchema);
+const costomer = mongoose.model('details', detailsSchema);
 
-module.exports = Ninja;
+module.exports = costomer;
