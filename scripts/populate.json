@@ -1,6 +1,4 @@
-
-
- db.details.insertMany([
+[
     {
         "_id": "5e7dd6c1946ac42480877713",
         "available": true,
@@ -37,4 +35,4 @@
             "calculated": 88053.20641196735
         }
     }
-]);
+]
