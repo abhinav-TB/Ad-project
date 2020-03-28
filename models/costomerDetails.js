@@ -26,6 +26,9 @@ const detailsSchema = new Schema({
         type: Boolean,
         default: false
     },
+    
+    imageURL : { type : String },
+
     geometry: GeoSchema
 });
 

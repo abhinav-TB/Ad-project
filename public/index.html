@@ -33,6 +33,7 @@
                             <span className={costumer.available}></span>
                             <span className="name">{costumer.name}</span>
                             <span className="rank">{costumer.rating}</span>
+                            <span className="image"><img src={costumer.imageURL} alt="picture" /></span>
                             <span className="dist">{Math.floor(costumer.dist.calculated/1000)} km</span>
                         </li>
                     );

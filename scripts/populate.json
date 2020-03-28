@@ -4,6 +4,7 @@
         "available": true,
         "name": "food o food",
         "rating": "good",
+        "imageURL" : "../assets/img/details/foodOfood.jpeg",
         "geometry": {
             "type": "point",
             "_id": "5e7dc19ae6bee13d04e55c13",
@@ -22,6 +23,7 @@
         "available": true,
         "name": "chicking",
         "rating": "exellent",
+        "imageURL" : "../assets/img/details/chicking.jpeg",
         "geometry": {
             "type": "point",
             "_id": "5e7dc19ae6bee13d04e55c13",
