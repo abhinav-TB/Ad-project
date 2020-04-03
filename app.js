@@ -1,10 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const fetch = require('node-fetch');
 
 //express app setup
 const app = express();
-const port = process.env.PORT | 5000;
+const port = process.env.PORT | 8000;
 
 //connect to mongo db
 mongoose.connect('mongodb://localhost/ninjago');
@@ -38,5 +39,25 @@ app.get('/', function(req, res) {
 app.get('/Listings', function(req, res) {
 	res.render('Listings');
 })
+
+
+// To push api data to front 
+app.get('/testapi' , (req,res) => {
+    let url = 'http://localhost:8000/api/details?lng=-80&lat=25'
+    fetch(url, {method: 'GET'})
+    .then(res => res.json())
+    .then(json => {
+        console.log(json);
+        console.log('Data acquired');
+        res.render('view',{data:json})
+    })
+    .catch(err => {
+        console.log("Error!");
+        console.log(err);
+    })
+})
+
+
+
 app.use(express.static('public'));
 app.listen(port, () => { console.log("Server started on port: " + port) });
