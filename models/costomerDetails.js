@@ -29,6 +29,12 @@ const detailsSchema = new Schema({
     
     imageURL : { type : String },
 
+    category : { type : String },
+
+    dist : {
+        calculated : {type : Number}
+    },
+
     geometry: GeoSchema
 });
 

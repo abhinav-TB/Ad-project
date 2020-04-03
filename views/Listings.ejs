@@ -204,10 +204,11 @@
                     </div>
                 </div>
                 <div class="col-xl-8 col-lg-8">
-                        <h3 class="exp_title">2 Listings are available</h3>
+                        <h3 class="exp_title"><%= data.length %> Listings are available</h3>
                        
                         <div class="row">
-                            <% data.forEach((docs) => { %>
+                            <% data.forEach((docs,i) => { %>
+                                
                                 <div class="col-xl-6 col-lg-6 col-md-6">
                                     <div class="single_explorer">
                                         <div class="thumb">

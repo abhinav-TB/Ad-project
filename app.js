@@ -67,6 +67,21 @@ app.get('/testapi' , (req,res) => {
     })
 })
 
+app.get('/details/filter/:label',(req,res) => {
+    let url =  'http://localhost:8000/api/details/filter/'+req.params.label;
+    fetch(url, {method: 'GET'})
+    .then(res => res.json())
+    .then(json => {
+        console.log(json);
+        console.log('Data acquired');
+        res.render('Listings',{data:json})
+    })
+    .catch(err => {
+        console.log("Error!");
+        console.log(err);
+    })
+})
+
 
 
 app.use(express.static('public'));

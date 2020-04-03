@@ -1,6 +1,7 @@
 const express = require ('express');
 const router = express.Router();
 const costomer = require('../models/costomerDetails');
+const apiController = require('../controller/api.controller');
 
 // get a list of ninjas from the db
 router.get('/details', function(req, res, next){
@@ -10,6 +11,9 @@ router.get('/details', function(req, res, next){
     costomer.aggregate([{ $geoNear: { near: {type: 'Point', coordinates: [parseFloat(req.query.lng), parseFloat(req.query.lat)]}, spherical: true, maxDistance: 100000, distanceField: "dist.calculated" } }])
     .then(function(results){ res.send(results); });
 });
+
+//Search by label
+router.get('/details/filter/:label', apiController.label_show);
 
 // add a new costomer to the db
 router.post('/details', function(req, res, next){
