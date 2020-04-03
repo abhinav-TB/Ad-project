@@ -37,9 +37,19 @@ app.get('/', function(req, res) {
 	res.render('home');
 })
 app.get('/Listings', function(req, res) {
-	res.render('Listings');
+    let url = 'http://localhost:8000/api/details?lng=-80&lat=25'
+    fetch(url, {method: 'GET'})
+    .then(res => res.json())
+    .then(json => {
+        console.log(json);
+        console.log('Data acquired');
+        res.render('Listings',{data:json})
+    })
+    .catch(err => {
+        console.log("Error!");
+        console.log(err);
+    })
 })
-
 
 // To push api data to front 
 app.get('/testapi' , (req,res) => {
@@ -49,7 +59,7 @@ app.get('/testapi' , (req,res) => {
     .then(json => {
         console.log(json);
         console.log('Data acquired');
-        res.render('view',{data:json})
+        res.render('Listings',{data:json})
     })
     .catch(err => {
         console.log("Error!");
