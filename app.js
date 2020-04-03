@@ -68,7 +68,7 @@ app.get('/testapi' , (req,res) => {
 })
 
 app.get('/details/filter/:label',(req,res) => {
-    let url =  'http://localhost:8000/api/details/filter/'+req.params.label;
+    let url =  'http://localhost:8000/api/details/filter/'+req.params.label+'?lng=-80&lat=25';
     fetch(url, {method: 'GET'})
     .then(res => res.json())
     .then(json => {

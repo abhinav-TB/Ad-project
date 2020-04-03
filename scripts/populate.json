@@ -4,6 +4,7 @@
         "available": true,
         "name": "food o food",
         "rating": "good",
+        "category" : "restaurant",
         "imageURL" : "/assets/img/details/foodOfood.jpeg",
         "geometry": {
             "type": "point",
