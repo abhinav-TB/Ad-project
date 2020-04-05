@@ -2,6 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const fetch = require('node-fetch');
+const passport = require('passport');
+const localStrategy = require('passport-local');
+const passportLocalMongoose = require('passport-local-mongoose');
 
 //express app setup
 const app = express();
@@ -17,7 +20,6 @@ app.use(bodyParser.json());
 
 
 // initialize routes
-
 app.use('/api', require('./routes/api'));
 
 
@@ -33,9 +35,16 @@ app.use("/assets/img", express.static(__dirname + "/assets/img"));
 app.use("/assets/img", express.static(__dirname + "/assets/scss"));
 app.use("/assets/js", express.static(__dirname + "/assets/js"));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
 app.get('/', function(req, res) {
 	res.render('home');
 })
+
+
 app.get('/Listings', function(req, res) {
     let url = 'http://localhost:8000/api/details?lng=-80&lat=25'
     fetch(url, {method: 'GET'})
@@ -67,6 +76,7 @@ app.get('/testapi' , (req,res) => {
     })
 })
 
+//Filtered Search
 app.get('/details/filter/:label',(req,res) => {
     let url =  'http://localhost:8000/api/details/filter/'+req.params.label+'?lng=-80&lat=25';
     fetch(url, {method: 'GET'})
